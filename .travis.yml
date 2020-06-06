@@ -18,7 +18,7 @@ after_success:
   - docker build -t whizzler/multi-docker-server ./server
   - docker build -t whizzler/multi-docker-worker ./worker
   # Log into the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push the production images to docker-hub
   - docker push whizzler/multi-docker-client
   - docker push whizzler/multi-docker-nginx
