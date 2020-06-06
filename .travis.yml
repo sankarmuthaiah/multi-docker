@@ -13,10 +13,10 @@ script:
 # Build the production images and push to docker-hub
 after_success:
   # Build the production images
-  - dockber build -t whizzler/multi-docker-client ./client
-  - dockber build -t whizzler/multi-docker-nginx ./nginx
-  - dockber build -t whizzler/multi-docker-server ./server
-  - dockber build -t whizzler/multi-docker-worker ./worker
+  - docker build -t whizzler/multi-docker-client ./client
+  - docker build -t whizzler/multi-docker-nginx ./nginx
+  - docker build -t whizzler/multi-docker-server ./server
+  - docker build -t whizzler/multi-docker-worker ./worker
   # Log into the docker CLI
   - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push the production images to docker-hub
