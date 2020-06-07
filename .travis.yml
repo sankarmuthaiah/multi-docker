@@ -4,23 +4,23 @@ services:
 
 # Build the test image
 before_install:
-  - docker build -t whizzler/mutli-docker-test -f ./client/Dockerfile.dev ./client
+  - docker build -t sankarmuthaiah/mutli-docker-test -f ./client/Dockerfile.dev ./client
 
 # Run the tests in test image
 script:
-  - docker run -e CI=true whizzler/mutli-docker-test npm run test
+  - docker run -e CI=true sankarmuthaiah/mutli-docker-test npm run test
 
 # Build the production images and push to docker-hub
 after_success:
   # Build the production images
-  - docker build -t whizzler/multi-docker-client ./client
-  - docker build -t whizzler/multi-docker-nginx ./nginx
-  - docker build -t whizzler/multi-docker-server ./server
-  - docker build -t whizzler/multi-docker-worker ./worker
+  - docker build -t sankarmuthaiah/multi-docker-client ./client
+  - docker build -t sankarmuthaiah/multi-docker-nginx ./nginx
+  - docker build -t sankarmuthaiah/multi-docker-server ./server
+  - docker build -t sankarmuthaiah/multi-docker-worker ./worker
   # Log into the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push the production images to docker-hub
-  - docker push whizzler/multi-docker-client
-  - docker push whizzler/multi-docker-nginx
-  - docker push whizzler/multi-docker-server
-  - docker push whizzler/multi-docker-worker
+  - docker push sankarmuthaiah/multi-docker-client
+  - docker push sankarmuthaiah/multi-docker-nginx
+  - docker push sankarmuthaiah/multi-docker-server
+  - docker push sankarmuthaiah/multi-docker-worker
